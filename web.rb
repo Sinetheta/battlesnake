@@ -13,3 +13,11 @@ post '/start' do
 
     return responseObject.to_json
 end
+
+post '/move' do
+  responseObject = {
+      move: 'left'
+  }
+
+  return responseObject.to_json
+end
