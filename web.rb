@@ -3,6 +3,11 @@ require 'json'
 
 set :bind, '0.0.0.0'
 
+before do
+  request.body.rewind
+  @request_payload = JSON.parse request.body.read
+end
+
 post '/start' do
   responseObject = {
     name: "Serpentor",
