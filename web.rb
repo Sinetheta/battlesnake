@@ -21,7 +21,7 @@ end
 
 post '/move' do
   responseObject = {
-      move: 'left'
+    move: 'left'
   }
 
   return responseObject.to_json
