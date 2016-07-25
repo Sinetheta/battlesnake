@@ -1,5 +1,8 @@
 require 'sinatra'
 require 'json'
+require 'pry'
+require './lib/board'
+require './lib/snake'
 
 set :bind, '0.0.0.0'
 
@@ -20,8 +23,12 @@ post '/start' do
 end
 
 post '/move' do
+  snakes = @request_payload['snakes'].map { |s| Snake.new(s) }
+  board = Board.new(@request_payload['board'], snakes)
+  my_snake = board.find_snake("Serpentor")
+
   responseObject = {
-    move: 'left'
+    move: my_snake.next_move(board)
   }
 
   return responseObject.to_json
