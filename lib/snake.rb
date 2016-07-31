@@ -9,8 +9,8 @@ class Snake
   end
 
   def next_move(board)
-    if safe_next_locations(board).any?
-      Board.direction_to_adjacent(head_location, safe_next_locations(board).first)
+    if safe_next_tiles(board).any?
+      safe_next_tiles(board).first.direction_from_location(head_location)
     else
       'up'
     end
@@ -22,7 +22,7 @@ class Snake
     @coords.first
   end
 
-  def safe_next_locations(board)
-    @snl ||= board.safe_adjacent_locations(head_location)
+  def safe_next_tiles(board)
+    @snt ||= board.get_tile(head_location).walkable_neighbours
   end
 end

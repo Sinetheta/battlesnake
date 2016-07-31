@@ -23,8 +23,7 @@ post '/start' do
 end
 
 post '/move' do
-  snakes = @request_payload['snakes'].map { |s| Snake.new(s) }
-  board = Board.new(@request_payload['board'], snakes)
+  board = Board.new(@request_payload['snakes'], @request_payload['board'])
   my_snake = board.find_snake("Serpentor")
 
   responseObject = {
