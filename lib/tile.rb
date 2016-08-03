@@ -1,6 +1,10 @@
 class Tile
   attr_reader :x, :y
 
+  def inspect
+    "Tile(x: #{x}, y: #{y}, state: #{@state})"
+  end
+
   def initialize(x, y, state, board)
     @x = x
     @y = y

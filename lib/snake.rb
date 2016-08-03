@@ -1,3 +1,4 @@
+require 'astar'
 require './lib/board'
 
 class Snake
@@ -9,6 +10,7 @@ class Snake
   end
 
   def next_move(board)
+    binding.pry
     if safe_next_tiles(board).any?
       safe_next_tiles(board).first.direction_from_location(head_location)
     else
